@@ -13,9 +13,10 @@ def speak(audio):
     engine.runAndWait()
 
 
-def getVoices(voice):
+def getVoices(voices):
     voices = engine.getProperty('voices')
-    # print(voices[1].id)
+    # for voice in voices:
+    #     print(voice)
     if voice == 1:
         engine.setProperty('voice', voices[0].id)
 
@@ -39,6 +40,7 @@ def date():
     speak(month)
     speak(year)
 
+# Greets according to the time
 def greeting():
     hour = datetime.datetime.now().hour
     if hour >= 6 and hour < 12:
@@ -52,13 +54,15 @@ def greeting():
 
 
 def intro():
+    greeting()
     speak(f'Welcome back sir!')
     time()
     date()
-    greeting()
     speak('Jarvis at your service, please tell me how I can assist you')
 # while True:
 #     voice = int(input("Press 1 for male voice\nPress 2 for female voice\n"))
 #     #speak(audio)
 #     getVoices(voice)
+
+
 intro()
