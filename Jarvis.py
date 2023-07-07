@@ -1,4 +1,4 @@
-# This is a tts python program
+# This is a tts python program, called Jarvis
 import pyttsx3 # pip install pyttsx3: text to speech package
 import datetime
 
