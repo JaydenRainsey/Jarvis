@@ -5,6 +5,9 @@ import datetime
 engine = pyttsx3.init()
 
 
+myname = 'Jay'
+
+
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
@@ -18,7 +21,7 @@ def getVoices(voice):
 
     if voice == 2:
         engine.setProperty('voice', voices[1].id)
-    speak("hello I am Jarvis")
+    speak(f'hello {myname}, I am Jarvis')
 
     
 def time():
@@ -35,8 +38,15 @@ def date():
     speak(day)
     speak(month)
     speak(year)
+
+
+def greeting():
+    speak(f'Welcome back {myname}!')
+    time()
+    date()
+    speak('Jarvis at your service, please tell me how I can assist you')
 # while True:
 #     voice = int(input("Press 1 for male voice\nPress 2 for female voice\n"))
 #     #speak(audio)
 #     getVoices(voice)
-date()
+greeting()
