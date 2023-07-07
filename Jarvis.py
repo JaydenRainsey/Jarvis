@@ -64,5 +64,3 @@ def intro():
 #     #speak(audio)
 #     getVoices(voice)
 
-
-intro()
