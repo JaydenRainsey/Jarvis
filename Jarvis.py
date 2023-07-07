@@ -26,8 +26,17 @@ def time():
     speak("The current time is: ")
     speak(Time)
 
+
+def date():
+    year = int(datetime.datetime.now().year)
+    month = int(datetime.datetime.now().month)
+    day = int(datetime.datetime.now().day)
+    speak('The current date is: ')
+    speak(day)
+    speak(month)
+    speak(year)
 # while True:
 #     voice = int(input("Press 1 for male voice\nPress 2 for female voice\n"))
 #     #speak(audio)
 #     getVoices(voice)
-time()
+date()
