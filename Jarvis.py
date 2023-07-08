@@ -23,10 +23,10 @@ def getVoices(voice):
     #     print(voice)
     if voice == 1:
         engine.setProperty('voice', voices[0].id)
-        speak(f'hello {myname}, I am Jarvis')
+        speak(f'hello, I am Jarvis')
     if voice == 2:
         engine.setProperty('voice', voices[1].id)
-        speak(f'hello {myname}, I am Friday')
+        speak(f'hello, I am Friday')
     
 
     
@@ -116,3 +116,7 @@ if __name__ == "__main__":
             result = wikipedia.summary(query, sentences = 2)
             print(result)
             speak(result)
+        elif 'offline' in query:
+            speak('Now going offline')
+            quit()
+            
