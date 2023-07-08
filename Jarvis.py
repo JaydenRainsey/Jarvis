@@ -7,6 +7,7 @@ import smtplib
 import wikipedia
 import webbrowser as wb
 import pywhatkit
+import requests
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -67,12 +68,8 @@ def intro():
     time()
     date()
     speak('Jarvis at your service, please tell me how I can assist you')
-# while True:
-#     voice = int(input("Press 1 for male voice\nPress 2 for female voice\n"))
-#     #speak(audio)
-#     getVoices(voice)
 
-intro()
+
 def takeCommandCMD():
     query = input("How can I assit you? ")
     return query
@@ -108,35 +105,50 @@ def searchGoogle():
     search = input("What to search on google? ")
     wb.open('https://www.google.com/search?q='+search)
     
+#api.openweathermap.org/data/2.5/weather?q=Frankfort,il&APPID=cfda4cf405678ff60e8fc14ac94b6abf
 
-# if __name__ == "__main__":
-#     getVoices(1)
-#     intro()
-#     while True:
-#         query = takeCommandCMD().lower()
+if __name__ == "__main__":
+    getVoices(1)
+    intro()
+    while True:
+        query = takeCommandCMD().lower()
 
-#         if 'time' in query:
-#             time()
+        if 'time' in query:
+            time()
 
-#         elif 'date' in query:
-#             date()
+        elif 'date' in query:
+            date()
 
-#         elif 'wikipedia' in query:
-#             speak('searching wikipedia...')
-#             query = query.replace("wikipedia", "")
-#             result = wikipedia.summary(query, sentences = 2)
-#             print(result)
-#             speak(result)
+        elif 'wikipedia' in query:
+            speak('searching wikipedia...')
+            query = query.replace("wikipedia", "")
+            result = wikipedia.summary(query, sentences = 2)
+            print(result)
+            speak(result)
 
-#         elif 'search' in query:
-#             searchGoogle()
+        elif 'search' in query:
+            searchGoogle()
 
-#         elif 'youtube' in query:
-#             speak('What should I search for on youtube?')
-#             topic = input("What to search for on youtube? ")
-#             pywhatkit.playonyt(topic)
+        elif 'youtube' in query:
+            speak('What should I search for on youtube?')
+            topic = input("What to search for on youtube? ")
+            pywhatkit.playonyt(topic)
 
-#         elif 'offline' in query:
-#             speak('Now going offline')
-#             quit()
+        elif 'weather' in query:
+            url = 'api.openweathermap.org/data/2.5/weather?q=Frankfort,il&APPID=cfda4cf405678ff60e8fc14ac94b6abf'
+
+            res = requests.get(url)
+            data = res.json()
+
+            weather = data['weather'][0]['main']
+            temp = data['main']['temp']
+            desp = data['weather'][0]['description']
+            print(weather)
+            print(temp)
+            print(desp)
+            
+
+        elif 'offline' in query:
+            speak('Now going offline')
+            quit()
             
