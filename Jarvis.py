@@ -99,7 +99,7 @@ def takeCommandMic():
 #     server.close()
 
 
-sendEmail()
+
 # if __name__ == "__main__":
 #     getVoices(2)
 #     intro()
