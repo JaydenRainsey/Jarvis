@@ -9,6 +9,8 @@ import webbrowser as wb
 import pywhatkit
 
 engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[2].id)
 
 
 myname = 'Jay'
@@ -21,17 +23,16 @@ def speak(audio):
 # Change voices from male to female
 def getVoices(voice):
     voices = engine.getProperty('voices')
-    # for voice in voices:
-    #     print(voice)
+    #print(voices[2].id)
     if voice == 1:
-        engine.setProperty('voice', voices[0].id)
+        engine.setProperty('voice', voices[2].id)
         speak(f'hello, I am Jarvis')
     if voice == 2:
         engine.setProperty('voice', voices[1].id)
         speak(f'hello, I am Friday')
     
 
-    
+
 def time():
     Time = datetime.datetime.now().strftime("%I:%M:%S") # Hour, Minutes, Seconds
     speak("The current time is: ")
@@ -71,7 +72,7 @@ def intro():
 #     #speak(audio)
 #     getVoices(voice)
 
-
+intro()
 def takeCommandCMD():
     query = input("How can I assit you? ")
     return query
@@ -108,35 +109,34 @@ def searchGoogle():
     wb.open('https://www.google.com/search?q='+search)
     
 
+# if __name__ == "__main__":
+#     getVoices(1)
+#     intro()
+#     while True:
+#         query = takeCommandCMD().lower()
 
-if __name__ == "__main__":
-    getVoices(1)
-    # intro()
-    while True:
-        query = takeCommandCMD().lower()
+#         if 'time' in query:
+#             time()
 
-        if 'time' in query:
-            time()
+#         elif 'date' in query:
+#             date()
 
-        elif 'date' in query:
-            date()
+#         elif 'wikipedia' in query:
+#             speak('searching wikipedia...')
+#             query = query.replace("wikipedia", "")
+#             result = wikipedia.summary(query, sentences = 2)
+#             print(result)
+#             speak(result)
 
-        elif 'wikipedia' in query:
-            speak('searching wikipedia...')
-            query = query.replace("wikipedia", "")
-            result = wikipedia.summary(query, sentences = 2)
-            print(result)
-            speak(result)
+#         elif 'search' in query:
+#             searchGoogle()
 
-        elif 'search' in query:
-            searchGoogle()
+#         elif 'youtube' in query:
+#             speak('What should I search for on youtube?')
+#             topic = input("What to search for on youtube? ")
+#             pywhatkit.playonyt(topic)
 
-        elif 'youtube' in query:
-            speak('What should I search for on youtube?')
-            topic = input("What to search for on youtube? ")
-            pywhatkit.playonyt(topic)
-
-        elif 'offline' in query:
-            speak('Now going offline')
-            quit()
+#         elif 'offline' in query:
+#             speak('Now going offline')
+#             quit()
             
