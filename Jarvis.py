@@ -1,6 +1,7 @@
 # This is a tts python program, called Jarvis
 import pyttsx3 # pip install pyttsx3: text to speech package
 import datetime
+import speech_recognition as sr # speech from mic input
 
 engine = pyttsx3.init()
 
@@ -66,9 +67,25 @@ def intro():
 
 
 def takeCommandCMD():
-    query = input("How can I help you? ")
+    query = input("How can I assit you? ")
     return query
 
+
+def takeCommandMic():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+    try:
+        print("Recognizing...")
+        query = r.recognize_google(audio, language="en-us")
+        print(query)
+    except Exception as e:
+        print(e)
+        speak("Say that again please...")
+        return "None"
+    return query
 
 if __name__ == "__main__":
     intro()
