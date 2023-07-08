@@ -5,6 +5,8 @@ import speech_recognition as sr # speech from mic input
 import smtplib
 # from secrets import senderemail, epwd, to
 import wikipedia
+import webbrowser as wb
+import pywhatkit
 
 engine = pyttsx3.init()
 
@@ -100,22 +102,40 @@ def takeCommandMic():
 #     server.close()
 
 
+def searchGoogle():
+    speak(f'what should I search for on google')
+    search = input("What to search on google? ")
+    wb.open('https://www.google.com/search?q='+search)
+    
+
 
 if __name__ == "__main__":
     getVoices(1)
-    intro()
+    # intro()
     while True:
         query = takeCommandCMD().lower()
+
         if 'time' in query:
             time()
+
         elif 'date' in query:
             date()
+
         elif 'wikipedia' in query:
             speak('searching wikipedia...')
             query = query.replace("wikipedia", "")
             result = wikipedia.summary(query, sentences = 2)
             print(result)
             speak(result)
+
+        elif 'search' in query:
+            searchGoogle()
+
+        elif 'youtube' in query:
+            speak('What should I search for on youtube?')
+            topic = input("What to search for on youtube? ")
+            pywhatkit.playonyt(topic)
+
         elif 'offline' in query:
             speak('Now going offline')
             quit()
