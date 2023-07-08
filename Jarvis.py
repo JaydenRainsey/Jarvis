@@ -14,16 +14,17 @@ def speak(audio):
     engine.runAndWait()
 
 
-def getVoices(voices):
+def getVoices(voice):
     voices = engine.getProperty('voices')
     # for voice in voices:
     #     print(voice)
     if voice == 1:
         engine.setProperty('voice', voices[0].id)
-
+        speak(f'hello {myname}, I am Jarvis')
     if voice == 2:
         engine.setProperty('voice', voices[1].id)
-    speak(f'hello {myname}, I am Jarvis')
+        speak(f'hello {myname}, I am Friday')
+    
 
     
 def time():
@@ -88,6 +89,7 @@ def takeCommandMic():
     return query
 
 if __name__ == "__main__":
+    getVoices(2)
     intro()
     while True:
         query = takeCommandCMD().lower()
