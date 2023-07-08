@@ -4,6 +4,7 @@ import datetime
 import speech_recognition as sr # speech from mic input
 import smtplib
 # from secrets import senderemail, epwd, to
+import wikipedia
 
 engine = pyttsx3.init()
 
@@ -100,12 +101,18 @@ def takeCommandMic():
 
 
 
-# if __name__ == "__main__":
-#     getVoices(2)
-#     intro()
-#     while True:
-#         query = takeCommandCMD().lower()
-#         if 'time' in query:
-#             time()
-#         elif 'date' in query:
-#             date()
+if __name__ == "__main__":
+    getVoices(1)
+    intro()
+    while True:
+        query = takeCommandCMD().lower()
+        if 'time' in query:
+            time()
+        elif 'date' in query:
+            date()
+        elif 'wikipedia' in query:
+            speak('searching wikipedia...')
+            query = query.replace("wikipedia", "")
+            result = wikipedia.summary(query, sentences = 2)
+            print(result)
+            speak(result)
