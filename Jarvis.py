@@ -2,6 +2,8 @@
 import pyttsx3 # pip install pyttsx3: text to speech package
 import datetime
 import speech_recognition as sr # speech from mic input
+import smtplib
+# from secrets import senderemail, epwd, to
 
 engine = pyttsx3.init()
 
@@ -13,7 +15,7 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-
+# Change voices from male to female
 def getVoices(voice):
     voices = engine.getProperty('voices')
     # for voice in voices:
@@ -88,12 +90,22 @@ def takeCommandMic():
         return "None"
     return query
 
-if __name__ == "__main__":
-    getVoices(2)
-    intro()
-    while True:
-        query = takeCommandCMD().lower()
-        if 'time' in query:
-            time()
-        elif 'date' in query:
-            date()
+
+# def sendEmail():
+#     server = smtplib.SMTP('smtp.gmail.com', 587)
+#     server.starttls()
+#     server.login(senderemail, epwd)
+#     server.sendemail(senderemail, to, 'hello, this is Jarvis')
+#     server.close()
+
+
+sendEmail()
+# if __name__ == "__main__":
+#     getVoices(2)
+#     intro()
+#     while True:
+#         query = takeCommandCMD().lower()
+#         if 'time' in query:
+#             time()
+#         elif 'date' in query:
+#             date()
