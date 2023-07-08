@@ -55,7 +55,7 @@ def greeting():
 
 def intro():
     greeting()
-    speak(f'Welcome back sir!')
+    speak(f'Welcome back')
     time()
     date()
     speak('Jarvis at your service, please tell me how I can assist you')
@@ -64,3 +64,17 @@ def intro():
 #     #speak(audio)
 #     getVoices(voice)
 
+
+def takeCommandCMD():
+    query = input("How can I help you? ")
+    return query
+
+
+if __name__ == "__main__":
+    intro()
+    while True:
+        query = takeCommandCMD().lower()
+        if 'time' in query:
+            time()
+        elif 'date' in query:
+            date()
