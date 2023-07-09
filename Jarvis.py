@@ -53,13 +53,13 @@ def date():
 def greeting():
     hour = datetime.datetime.now().hour
     if hour >= 6 and hour < 12:
-        speak(f'Good morning {myname}')
+        speak(f'Good morning mister {myname}')
     elif hour >= 12 and hour < 18:
-        speak(f'Good afternoon {myname}')
+        speak(f'Good afternoon mister {myname}')
     elif hour >= 18 and hour < 24:
-        speak(f'Good evening {myname}')
+        speak(f'Good evening mister {myname}')
     else:
-        speak(f'Good night {myname}')
+        speak(f'Good night mister {myname}')
 
 
 def intro():
@@ -105,7 +105,6 @@ def searchGoogle():
     search = input("What to search on google? ")
     wb.open('https://www.google.com/search?q='+search)
     
-#api.openweathermap.org/data/2.5/weather?q=Frankfort,il&APPID=cfda4cf405678ff60e8fc14ac94b6abf
 
 if __name__ == "__main__":
     getVoices(1)
@@ -120,7 +119,7 @@ if __name__ == "__main__":
             date()
 
         elif 'wikipedia' in query:
-            speak('searching wikipedia...')
+            speak(f'searching topic on wikipedia...')
             query = query.replace("wikipedia", "")
             result = wikipedia.summary(query, sentences = 2)
             print(result)
@@ -134,19 +133,6 @@ if __name__ == "__main__":
             topic = input("What to search for on youtube? ")
             pywhatkit.playonyt(topic)
 
-        elif 'weather' in query:
-            url = 'api.openweathermap.org/data/2.5/weather?q=Frankfort,il&APPID=cfda4cf405678ff60e8fc14ac94b6abf'
-
-            res = requests.get(url)
-            data = res.json()
-
-            weather = data['weather'][0]['main']
-            temp = data['main']['temp']
-            desp = data['weather'][0]['description']
-            print(weather)
-            print(temp)
-            print(desp)
-            
 
         elif 'offline' in query:
             speak('Now going offline')
