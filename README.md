@@ -8,3 +8,5 @@ Currently, these are the capabilities:
   search for youtube videos,
   search for headlines in the news,
   go offline. This program uses Ivona's Brian voice.
+
+  TODO: add getWeather, getNews, readText, randomJokes, passwordGen, flipCoin, rollDice functions
