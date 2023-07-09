@@ -7,4 +7,4 @@ Currently, these are the capabilities:
   search for the weather of a location,
   search for youtube videos,
   search for headlines in the news,
-  go offline.
+  go offline. This program uses Ivona's Brian voice.
