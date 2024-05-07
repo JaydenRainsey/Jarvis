@@ -1,7 +1,7 @@
 # This is a tts python program, called Jarvis
-import pyttsx3 # pip install pyttsx3: text to speech package
+import pyttsx3  # pip install pyttsx3: text to speech package
 import datetime
-import speech_recognition as sr # speech from mic input
+import speech_recognition as sr  # speech from mic input
 import smtplib
 # from secrets import senderemail, epwd, to
 import wikipedia
@@ -22,20 +22,21 @@ def speak(audio):
     engine.runAndWait()
 
 # Change voices from male to female
+
+
 def getVoices(voice):
     voices = engine.getProperty('voices')
-    #print(voices[2].id)
+    # print(voices[2].id)
     if voice == 1:
         engine.setProperty('voice', voices[2].id)
         speak(f'hello, I am Jarvis')
     if voice == 2:
         engine.setProperty('voice', voices[1].id)
         speak(f'hello, I am Friday')
-    
 
 
 def time():
-    Time = datetime.datetime.now().strftime("%I:%M:%S") # Hour, Minutes, Seconds
+    Time = datetime.datetime.now().strftime("%I:%M:%S")  # Hour, Minutes, Seconds
     speak("The current time is: ")
     speak(Time)
 
@@ -50,6 +51,8 @@ def date():
     speak(year)
 
 # Greets according to the time
+
+
 def greeting():
     hour = datetime.datetime.now().hour
     if hour >= 6 and hour < 12:
@@ -104,7 +107,7 @@ def searchGoogle():
     speak(f'what should I search for on google')
     search = input("What to search on google? ")
     wb.open('https://www.google.com/search?q='+search)
-    
+
 
 if __name__ == "__main__":
     getVoices(1)
@@ -121,7 +124,7 @@ if __name__ == "__main__":
         elif 'wikipedia' in query:
             speak(f'searching topic on wikipedia...')
             query = query.replace("wikipedia", "")
-            result = wikipedia.summary(query, sentences = 2)
+            result = wikipedia.summary(query, sentences=2)
             print(result)
             speak(result)
 
@@ -133,8 +136,6 @@ if __name__ == "__main__":
             topic = input("What to search for on youtube? ")
             pywhatkit.playonyt(topic)
 
-
         elif 'offline' in query:
             speak('Now going offline')
             quit()
-            
